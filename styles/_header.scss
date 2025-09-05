@@ -1,0 +1,35 @@
+header {
+    width: $width100;
+    @include flexJustify(space-around);
+    align-items: center;
+    box-sizing: border-box;
+    background-color: $mainColor;
+    flex-wrap: wrap;
+
+    .header__image {
+        width: divideUnits(500);
+    }
+
+    .header__nav a {
+            color: $mainColor;
+            padding: divideUnits(15);
+            text-decoration: none;
+            background-color: $secondaryColor;
+        }
+
+    @include phone_tablet {
+        header {
+            justify-content: center;
+        }
+
+        .header__image {    
+            width: $width100;
+        }
+
+        .header__nav {
+            display: flex;
+            flex-direction: column;
+            padding: 5px 
+        }
+    }
+}

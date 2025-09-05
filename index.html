@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/script.js" defer></script>
+    <title>Hounded Express</title>
+  </head>
+  <body>
+    <header>
+      <img src="img/logoAzulBlancoHE.png" alt="Logo_Empresa" class="header__image"/>
+      <nav class="header__nav">
+        <a href="#">Inicio</a>
+        <a href="#">Registro</a>
+        <a href="#">Estado</a>
+        <a href="#">Lista de Guías</a>
+        <a href="#">Buscar Guías</a>
+        <a href="#">Historial de Guías</a>
+      </nav>
+    </header>
+    <main>
+      <section class="main__banner">
+        <div>
+          <h1>GuiaHExpress</h1>
+          <p>Restrea, actualiza y controla</p>
+        </div>
+        <div>
+          <img src="img/Logo_HE.png" alt="Logo_slogan" />
+        </div>
+      </section>
+      <section>
+        <article class="main__panel">
+          <div class="main__panel--tarjeta">
+            <div class="icono"><img src="img/box.png" alt="caja"></div>
+            <p class="titulo">Guías pendientes</p>
+            <p class="detalle" id="guiasPendientes">0</p>
+          </div>
+      
+          <div class="main__panel--tarjeta">
+            <div class="icono"><img src="img/bus.png" alt="transito"></div>
+            <p class="titulo">Guías en tránsito</p>
+            <p class="detalle" id="guiasTransito">0</p>
+          </div>
+      
+          <div class="main__panel--tarjeta">
+            <div class="icono"><img src="img/delivered.png" alt="entregado"></div>
+            <p class="titulo">Guías entregadas</p>
+            <p class="detalle" id="guiasEntregadas">0</p>
+          </div>
+        </article>
+      </section>
+      
+      <section>
+        <article>
+          <form class="main__formulario" id="formGuia">
+            <fieldset>
+              <legend>Indique la información de su guía</legend>
+              <div>
+                <label for="guianumero">Número de guía:</label>
+                <input
+                  type="number"
+                  id="numero"
+                  name="guianumero"
+                  required
+                />
+                <span class="error" id="errorNumero"></span><br><br>
+              </div>
+              <div>
+                <label for="origen">Origen:</label>
+                <input type="text" id="origen" name="origen" />
+                <span class="error" id="errorOrigen"></span><br><br>
+              </div>
+              <div>
+                <label for="destino">Destino:</label>
+                <input type="text" id="destino" name="destino" />
+                <span class="error" id="errorDestino"></span><br><br>
+              </div>
+              <div>
+                <label for="destinatario">Destinatario:</label>
+                <input
+                  type="text"
+                  id="destinatario"
+                  name="destinatario"
+                  required
+                />
+                <span class="error" id="errorDestinatario"></span><br><br>
+              </div>
+              <div>
+                <label for="fecha">Fecha de creación:</label>
+                <input type="date" id="fecha" name="fecha" />
+                <span class="error" id="errorFecha"></span><br><br>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Elija una opción</legend>
+              <label for="estado">Estado</label>
+              <select name="estado" id="estado">
+                <option value="Revisión" selected>Revisión</option>
+              </select>
+              <span class="error" id="errorEstado"></span><br><br>
+            </fieldset>
+            <button type="submit">Registrar</button>
+          </form>
+        </article>
+        <hr />
+        <article>
+          <section>
+            <h2>Lista de Guías</h2>
+            <div id="listaGuias"></div>
+          </section>
+          
+          <!-- Modal de Historial -->
+          <div id="modalHistorial" class="modal">
+            <div class="modal-content">
+              <span id="cerrarModal">&times;</span>
+              <h3>Historial de Cambios</h3>
+              <div id="contenidoHistorial"></div>
+            </div>
+          </div>
+
+          <!-- <table class="main__table">
+            <p>Listado de Guías registradas en sistema</p>
+            <thead>
+              <tr>
+                <th>No. Guia</th>
+                <th>Estado</th>
+                <th>Origen</th>
+                <th>Destino</th>
+                <th>Fecha actualización</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="No. Guia">1</td>
+                <td data-label="Estado">Entregado</td>
+                <td data-label="Origen">CDMX MX</td>
+                <td data-label="Destino">CALIFORNIA EU</td>
+                <td data-label="Fecha actualización">01/05/2024</td>
+                <td data-label="Acción">
+                  <input type="submit" value="Editar Estado" class="boton" />
+                  <input type="submit" value="Ver Historia" class="boton" />
+                </td>
+              </tr>
+              <tr>
+                <td data-label="No. Guia">2</td>
+                <td data-label="Estado">Entregado</td>
+                <td data-label="Origen">CDMX MX</td>
+                <td data-label="Destino">SONORA MX</td>
+                <td data-label="Fecha actualización">11/06/2024</td>
+                <td data-label="Acción">
+                  <input type="submit" value="Editar Estado" class="boton" />
+                  <input type="submit" value="Ver Historia" class="boton" />
+                </td>
+              </tr>
+              <tr>
+                <td data-label="No. Guia">3</td>
+                <td data-label="Estado">Entregado</td>
+                <td data-label="Origen">CALIFORNIA EU</td>
+                <td data-label="Destino">CHICAGO EU</td>
+                <td data-label="Fecha actualización">20/11/2024</td>
+                <td data-label="Acción">
+                  <input type="submit" value="Editar Estado" class="boton" />
+                  <input type="submit" value="Ver Historia" class="boton" />
+                </td>
+              </tr>
+              <tr>
+                <td data-label="No. Guía">4</td>
+                <td data-label="Estado">Entregado</td>
+                <td data-label="Origen">MEDELLIN CO</td>
+                <td data-label="Destino">CDMX MX</td>
+                <td data-label="Fecha Actualización">20/12/2024</td>
+                <td data-label="Acción">
+                  <input type="submit" value="Editar Estado" class="boton" />
+                  <input type="submit" value="Ver Historia" class="boton" />
+                </td>
+              </tr>
+              <tr>
+                <td data-label="No. Guía">5</td>
+                <td data-label="Estado">En tránsitgo</td>
+                <td data-label="Origen ">BOGOTÁ CO</td>
+                <td data-label="Destino">MEDELLIN MX</td>
+                <td data-label="Fecha actualización">20/12/2024</td>
+                <td data-label="Acción">
+                  <input type="submit" value="Editar Estado" class="boton" />
+                  <input type="submit" value="Ver Historia" class="boton" />
+                </td>
+              </tr>
+            </tbody>
+          </table> -->
+        </article>
+      </section>
+    </main>
+    <footer>
+      <hr>
+      <section>
+        <p>&copy; 2025 Hound Express, Derechos Reservados</p>
+        <p>Síguenos en nuestra redes sociales</p>
+        <div class="footer__redes_sociales">
+          <a href="#" target="_blank">
+            <img src="img/icons8-twitter.png" alt="Image-Twitter" />
+          </a>
+          <a href="#" target="_blank">
+            <img src="img/icons8-linkedin.png" alt="Image-Linkedin" />
+          </a>
+          <a href="#" target="_blank">
+            <img src="img/icons8-instagram.png" alt="Image-instagram"/>
+          </a>
+          <a href="#" target="_blank">
+            <img src="img/icons8-youtube.png" alt="Image-youtube"/>
+          </a>
+        </div>
+        <div class="footer__contacto">
+          <p>Ponte en contacto con nosotros</p>
+          <p>contacto@correo.com</p>
+        </div>
+      </section>
+    </footer>
+  </body>
+</html>

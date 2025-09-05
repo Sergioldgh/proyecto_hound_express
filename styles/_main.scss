@@ -1,0 +1,166 @@
+main {
+    background: $secondaryColor;
+    background: linear-gradient(180deg, rgba(106, 198, 222, 1) 0%, rgba(255, 255, 255, 1) 100%);
+
+    .main__banner {
+        width: $width100;
+        background: $mainColor;
+        background: linear-gradient(180deg, rgba(9, 30, 63, 1) 0%, rgba(106, 198, 222, 1) 100%);
+        color: #fff;
+        text-align: center;
+        padding: divideUnits(30) 0;
+        box-sizing: border-box;
+        @include flexJustify(space-evenly);
+        align-items: center;
+        flex-wrap: wrap;
+
+        img {
+            width: divideUnits(100);
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 2rem;
+        }
+
+        @include phone {
+            flex-wrap: wrap;
+        }
+    }
+
+    .main__panel {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(divideUnits(100), 1fr));
+        gap: 1.5rem;
+        padding: 2rem;
+
+        .main__panel--tarjeta {
+            background-color: $mainColor;
+            color: white;
+            padding: 1.5rem;
+            border-radius: divideUnits(16);
+            @extend %flexDirColumn;
+            align-items: center;
+        }
+
+        .main__panel--tarjeta:hover {
+            transform: translateY(divideUnits(-5));
+        }
+
+        .icono {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background-color: $secondaryColor;
+            color: $mainColor;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            @include flexJustify(center);
+            align-items: center;
+        }
+
+        img {
+            width: divideUnits(40);
+        }
+
+        .titulo {
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .detalle {
+            font-size: 2rem;
+            font-weight: bold;
+            color: $secondaryColor;
+        }
+    }
+
+    .main__formulario {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        border-radius: divideUnits(12);
+        box-shadow: 0 divideUnits(5) divideUnits(12) rgba(0, 0, 0, 0.1);
+        text-align: center;
+
+        div {
+            @extend %flexDirColumn;
+            margin-bottom: 1rem;
+        }
+
+        label {
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+            color: $mainColor;
+        }
+
+        input, select {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: divideUnits(8);
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus {
+            border-color: $secondaryColor;
+            outline: none;
+        }
+
+        button {
+            width: $width100;
+            padding: 0.75rem;
+            background-color: $mainColor;
+            color: white;
+            border: none;
+            border-radius: divideUnits(8);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background-color: $secondaryColor;
+            color: $mainColor;
+        }
+
+        legend {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: $mainColor;
+        }
+
+        fieldset {
+            border: none;
+            margin-bottom: 2rem;
+            padding: 0;
+        }
+
+        button:hover {
+            background-color: $secondaryColor;
+            color: $mainColor;
+        }
+
+        @include phone {
+            fieldset>div {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        
+            label {
+                width: 30%;
+                margin-bottom: 0;
+            }
+        
+            input, select {
+                width: 65%;
+            }
+        }
+    }
+}

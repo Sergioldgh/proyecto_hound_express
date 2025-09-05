@@ -1,0 +1,9 @@
+$mainColor: #091e3f;
+$secondaryColor: #6AC6DE;
+$fontFamily: 'Open Sans', sans-serif;
+$width100: 100%;
+
+%flexDirColumn {
+    display: flex;
+    flex-direction: column;
+}

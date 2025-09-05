@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+body {
+    font-family: $fontFamily;
+    margin: 0;
+    padding: divideUnits(20) divideUnits(20) 0 divideUnits(20);
+    font-size: divideUnits(15);
+    color: $mainColor;
+
+    p {
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}

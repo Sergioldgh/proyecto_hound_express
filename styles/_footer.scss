@@ -1,0 +1,28 @@
+footer {
+    height: divideUnits(300);
+    justify-items: center;
+    text-align: center;
+    align-content: center;
+
+    section {
+        align-items: center;
+
+        .footer__redes_sociales {
+            padding: divideUnits(30) 0;
+    
+            img {
+                width: divideUnits(50);
+            }
+        }
+    
+        .footer__contacto{
+            p {
+                font-size: 0.8rem;
+            }
+    
+            p:nth-child(2){
+                cursor: pointer;
+            }
+        }
+    }
+}

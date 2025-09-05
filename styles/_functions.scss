@@ -1,0 +1,4 @@
+@function divideUnits($value) {
+    $result: calc($value / 16);
+    @return $result + rem;
+}
