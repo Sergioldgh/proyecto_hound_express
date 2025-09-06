@@ -46,7 +46,7 @@ forma.addEventListener("submit", (e) => {
     console.log(guias);
     mostrarGuias();
     actualizaPanel();
-    // forma.reset();
+    forma.reset();
 
 });
 
